@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Fix for Material Icons in Leaflet markers */
+.custom-div-icon span.material-icons {
+  display: block;
+  text-align: center;
+  margin-top: -8px;
+  margin-left: -8px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Fix z-index issues with Leaflet map layers */
+.leaflet-pane {
+  z-index: 400 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 401 !important;
+}
+
+/* Fix z-index issues with leaflet popup */
+.leaflet-popup-content-wrapper {
+  z-index: 402 !important;
+}
+
+/* Make sure map controls are at appropriate z-index level */
+.leaflet-control {
+  z-index: 402 !important;
+}
+
+/* Ensure dialog and admin panel elements are above map */
+[data-radix-popper-content-wrapper],
+[role="dialog"],
+[role="alertdialog"] {
+  z-index: 1000 !important;
+}
